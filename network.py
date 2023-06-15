@@ -44,7 +44,7 @@ network.compile(optimizer=Adam(lr=1e-4), loss='categorical_crossentropy', metric
 HP_epochs = 50
 HP_ES_patience = 5
 HP_RLR_patience = 2
-HP_batch_size = 4
+HP_batch_size = 2
 
 cnn_net = network.fit(x=X_train,
                       y=y_train,
