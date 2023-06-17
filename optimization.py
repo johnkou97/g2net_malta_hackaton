@@ -9,7 +9,7 @@ from tensorflow.keras.regularizers import l2
 from tensorflow.keras import models
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import CategoricalCrossentropy
-from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
+from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
 
 # load the data
 df = pd.read_pickle('./data/df_train.pkl.gzip', compression = 'gzip')
