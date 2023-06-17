@@ -63,11 +63,12 @@ def objective(trial):
                         batch_size=HP_batch_size,
                         validation_data=(X_test, y_test),
                         callbacks=[
-                            EarlyStopping(monitor='val_loss', patience=HP_ES_patience),
-                            ReduceLROnPlateau(verbose=1, patience=HP_RLR_patience, monitor='val_loss')
+                            EarlyStopping(monitor='accuracy', patience=HP_ES_patience),
+                            ReduceLROnPlateau(verbose=0, patience=HP_RLR_patience, monitor='accuracy'),
+                            ModelCheckpoint('best-weights.h5', monitor='accuracy', save_best_only=True, save_weights_only=True)
                         ])
 
-
+    model.load_weights('best-weights.h5')
     # Evaluate the model on the validation set
     loss, accuracy = network.evaluate(X_test, y_test)
 
