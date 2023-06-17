@@ -51,7 +51,7 @@ def objective(trial):
 
     network.compile(optimizer=Adam(lr=learning_rate), loss='categorical_crossentropy', metrics=['accuracy'] )
 
-    HP_epochs = 50
+    HP_epochs = 40
     HP_ES_patience = 5
     HP_RLR_patience = 2
     HP_batch_size = 2
@@ -63,21 +63,21 @@ def objective(trial):
                         batch_size=HP_batch_size,
                         validation_data=(X_test, y_test),
                         callbacks=[
-                            EarlyStopping(monitor='accuracy', patience=HP_ES_patience),
-                            ReduceLROnPlateau(verbose=0, patience=HP_RLR_patience, monitor='accuracy'),
-                            ModelCheckpoint('best-weights.h5', monitor='accuracy', save_best_only=True, save_weights_only=True)
+                            EarlyStopping(monitor='val_loss', patience=HP_ES_patience),
+                            ReduceLROnPlateau(verbose=0, patience=HP_RLR_patience, monitor='val_loss'),
+                            ModelCheckpoint('best-weights.h5', monitor='val_ loss', save_best_only=True, save_weights_only=True)
                         ])
 
     model.load_weights('best-weights.h5')
     # Evaluate the model on the validation set
     loss, accuracy = network.evaluate(X_test, y_test)
 
-    return accuracy
+    return loss
 
 
 
 # Create an Optuna study and optimize the hyperparameters
-study = optuna.create_study(direction='maximize')
+study = optuna.create_study(direction='minimize')
 study.optimize(objective, n_trials=100)
 
 # Get the best hyperparameters from the study
