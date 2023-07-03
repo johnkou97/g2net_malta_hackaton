@@ -25,4 +25,7 @@ def evaluate( user_submission_file,true_submission = 'data/submissions_true.csv'
     output["submission_result"] = output["result"][0]["train_split"]
     return output['result'][0]['train_split']
 
-print(evaluate('submission.csv'))
+# evaluate the submissions
+
+print(f'Neural Network: {evaluate("submission_nn.csv")}')
+print(f'Adaboost: {evaluate("submission_adaboost.csv")}')
