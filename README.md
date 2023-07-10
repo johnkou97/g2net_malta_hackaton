@@ -14,7 +14,31 @@ The results are shown on the submission dataset.
 
 ## Information on the Hackathon
 
-The data used for the challenge contains earthquakes, together with non-earthquake ambient noise. The goal of this challenge is to correctly classify an unknown set of data `df_submission.pkl.gzip` using a neural network that was trained on `df_train.pkl.gzip` and `df_test.pkl.gzip` where the correct labels are provided. 
+The data used for the challenge contains earthquakes, together with non-earthquake ambient noise. The goal of this challenge is to correctly classify an unknown set of data `df_submission.pkl.gzip` using any model that was trained on `df_train.pkl.gzip` and `df_test.pkl.gzip` where the correct labels are provided. 
+
+## Files
+
+`network.py` - Neural network model
+
+`optimization.py` - Hyperparameter optimization
+
+`Adaboost.py` - Adaboost model
+
+`evaluate.py` - Evaluates the models
+
+`submission.py` - Creates submission files
+
+`MachneLearningUtils.py` - Utility functions for machine learning
+
+## Confusion matrix plot for the neural network model
+
+![Confusion matrix plot for the neural network model](confusion_matrix_nn.png)
+
+## Loss plot for the neural network model
+
+![loss](loss.png)
+
+## Information on the data and the hackathon
 
 The tutorial for the hackathon is [here](https://github.com/zerafachris/g2net_malta_hackaton)
 
